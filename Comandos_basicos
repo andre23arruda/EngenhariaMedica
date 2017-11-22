@@ -1,0 +1,157 @@
+%% 1 - Área de trabalho do Matlab
+
+%% 2 - Comandos básicos: 
+%clear, close, help, tipos de variáveis: single,
+%double, int8, uint8, int16, uint16, int32, uint32, int64, uint64
+clear;
+x = single(12348);
+y = double(123548);
+z = int16(123);
+whos x;
+whos y;
+whos z;
+
+
+%% 3 - Operações:
+% +, -, *, /, ^, (). 
+% Funções importantes: sin, sind, cos,cosd,tan,tand,abs, fix, floor, 
+% ceil, round, mod, rem, sign, sqrt,nthroot, log, log2, log10, exp
+clear;
+x = 12 +5;
+y = 12-5;
+z = 12*5;
+w = 12/5;
+a = 12^2;
+b = 12^3;
+c = 1 + 2*(5+3);
+d = sin(pi);
+e = cos(pi);
+f = round(pi);
+g = round(pi,2);
+h = int8(pi);
+i = mod(12,5);
+j = mod(12,4);
+k = sign(-5000);
+l = sign(-k);
+m = sqrt(x);
+n = nthroot(625,4);
+E = exp(1);   %e^1;
+o = log(E);
+
+%% 4 - Números aleatórios: rand, randi, randn
+clear;
+x = rand;
+z = randi([0 100]);
+y = randi([100,-100]);
+
+%% 5 - Vetores e matrizes (Array)
+clear;
+vetor = [1,2,3,4];
+tamanho_vetor = length(vetor);
+vetor1 = 1:4;
+vetor2 = 1:1:10;
+vetor3 = 1:0.5:4;
+v1_vetor = vetor(1);
+v3_vetor1 = vetor1(3);
+v8_vetor2 = vetor2(8);
+matriz = [1:4;1:4];
+[M,N] = size(matriz);
+x = size(matriz,1);
+matriz2 = [vetor1;vetor2];
+m_transposto = matriz';
+elemento13_matriz = matriz(1,3);
+elemento22_matriz = matriz(2,2);
+matriz(1,1) = 0;
+matriz(:,1) = 0;
+matriz(:,:) = 1;
+matriz_de_1 = ones(5,5);
+matriz_de_0 = zeros(5,5);
+matriz_identidade = eye(5,5);
+diagonal = diag([1 2 3]);
+% Alguns comandos para acessar valores
+numero_elementos = numel(diagonal);
+ultimo_elemento = diagonal(end);
+
+% Com o que vimos montar uma matriz 10x10 de valores aleatórios
+% acessar o elemento da quinta linha e quinta coluna
+% trocar o valor da primeira linha inteira para 0
+% transpor a matriz
+
+%% 6 - Operações com Vetores e matrizes
+% Esse é um topico que acho muito importante, porque as opeações com vetores e 
+% matrizes facilitam muito a resolução de um problema. Aqui podemos multiplicar
+%  elementos matrizes de forma facil
+clear;
+x = 1:50;
+y = 1:2:100;
+soma = x+y;
+subtracao = x-y;
+multiplicacao = x.*y;
+divisao = x./y;
+potencia = x.^2;
+produto_escalar = x*y';
+produto_vetorial = cross(x,y);
+
+%% 7 - Vetores e matrizes logicas
+% Outro tópico importante. Com isso, podemos acessar posições de matrizes
+% sem necessitar de loops para encontrar essas posições
+clear;
+x = [1 2 3; 4 5 6; 7 8 9];
+x_maior_5 = x>5;
+% Deeem uma conferida no valor retornado, pode perceber que sua classe é logical, ou seja, logico
+y = x(x_maior_5);
+% Comandos importantes
+resposta1 = any(x>5);
+resposta2 = any(x<0);
+resposta3 = all(x == 5);
+resposta4 = find(x>5);
+% O find retorna os valores desejados, ao inves das posicoes
+
+%% 8 - Operadores lógicos
+% Outro tópico importantissimo. Os operadores lógicos sãos os famosos E e OU
+% E (AND) retorna alto apenas quando as duas entradas são altas
+% OU (OR) retorna altor quando pelo menos uma das entradas é alta
+clear;
+x = 1:50;
+y = find(x>10 & x<50);
+z = find(x<0 | x<20);
+
+%% 9 - Programação básica
+% Escreva um script no editor
+% Um programa para calcular area de uma circunferencia, um triangulo e um quadrado
+% funções input, disp e fprintf
+% Quando aprendemos c ou outras linguagens normalmente usamos o scanf como input
+clear;
+numero1 = input('Digite um numero:');
+disp('Voce digitou:');
+disp(numero1);
+numero2 = input('Digite outro numero:');
+
+%% Funções de estatistica
+x = 1:10
+media = mean(x);
+
+y = repmat(x,2,1); %apenas repetindo o vetor na linha de baixo gerando uma matriz de duas linhas
+media = mean(x,1); % media das linhas
+media = mean(x,2); % media das colunas
+
+mediana = median(x);
+moda = mode(x);
+variancia = var(x)
+variancia = var(y,1)
+variancia = var(y,2)
+covariancia = cov(x)
+correlacao = corr(x)
+somatorio = sum(x)
+somatorio = sum(x,1)
+somatorio = sum(x,2)
+produtorio = prod(x)
+soma_acumulada = cumsum(x)
+produto_acumulado = cumprod(x) % eu acho que existe isso
+
+% O que mais gosta nesse tipo de linguagem é a forma de indexação de vetores e matrizes
+% No caso x = 1:10
+% Eu posso usar x(x>5) para acessar os valores maiores que 5
+% Justamente porque x>5 são valores lógicos true e false
+% Então é algo que acho facil observar
+
