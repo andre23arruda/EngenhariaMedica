@@ -1,0 +1,24 @@
+function [w,w0] = LS(m1,m2,a)
+
+% FUNCAO PARA CALCULAR O CLASSIFICADOR PERCEPTRON 
+% O Perceptron eh um vetor W em L+1 dimensoes que atribui uma classe Pk ao padrao Xk
+
+%INPUTS: 
+%  - m1: matriz com os dados da classe 1
+%  - m2: matriz com os dados da classe 2
+%  - a: parametro de regularizacao da inversao matricial
+  
+%OUTPUTS:
+%  - w e w0: pesos do classificador linear 
+  
+L = size(m1,1); % numero de caracteristicas dos dados da classe 1
+N1 = size(m1,2); % numero de padroes dos dados da classe 1
+N2 = size(m2,2); % numero de padroes dos dados da classe 2
+
+if(L ~= size(m2,1)) % se o numero de caracteristicas das classes for diferente
+  print('Numero de caracteristicas diferentes');
+else
+  m1(end+1,:) = 1; % colocando 1 no vetor
+  m2(end+1,:) = 1; % colocando 1 no vetor
+  y = [m1,m2]; % y é a juncao das classes
+  sinal = [ones(1,N1),-1*ones(1,N2)]; % identificao quem eh positivo e quem eh negativo (classe 1 ou classe 2)
