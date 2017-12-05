@@ -1,22 +1,61 @@
-%% 1 - Área de trabalho do Matlab
+%% 1 - Área de trabalho do Matlab ---------------------------------
+% A área de trabalho do Matlab ou do Octave consiste em:
+% - Editor: Onde você escreve seu script
+% - Command Window: Onde você programa em tempo real, testa funções, usa como calculadora, brinca, o que quiser
+% - Workspace: Onde aparece o nome, valor e tipo das variáveis. A área que eu mais gosto, pois prefiro programar em tempo real e ver o que está acontecendo ao decorrer do programa
+% - Janela de arquivos: Onde você pode visualizar quais arquivos estão contudos na sua pasta atual
+% - Histórico: Onde você visualiza seus comandos anteriores
+% - Se quiser, personalize do seu jeito, tente deixar o mais fácil para você utilizar. Eu gosto da janela da seguinte maneira:
+%% ---------------------------------------------------------------
 
-%% 2 - Comandos básicos: 
+%% 2 - Comandos básicos -------------------------------------
 %clear, close, help, tipos de variáveis: single,
 %double, int8, uint8, int16, uint16, int32, uint32, int64, uint64
-clear;
-x = single(12348);
-y = double(123548);
-z = int16(123);
-whos x;
+clear all; % Limpa todas as variáveis
+clear; % Limpa todas as variáveis
+close all; % Fecha todas as figuras;
+clc; % Limpa sua janela de comando
+% No octave podemos usar Ctrl + L para limpar a janela de comandos ambém
+x = single(12348); % Declarando uma variável do tipo single
+y = double(123548); % Declarando uma variável do tipo double
+z = int16(123); % Declarando uma variável do tipo int de 16 bits.
+% Teste double, int8, uint8, int16, uint16, int32, uint32, int64, uint64
+whos x; % Com o comando whos, podemos obter informações sobre uma variável
 whos y;
 whos z;
 
+% HELP
+% Mas é muita coisa, onde posso encontrar informação sobre uma função ou comando?
+% O HELP do MATLAB e do OCTAVE é repleto de informações.
+% Se quiser informação de algo escreva doc "nome da fução"
+% EX:
+doc mean; % Verificando informação sobre a função que retorna a média dos dados
+% Então é algo muito fácil, vamos lá?
+%% -------------------------------------------------------------------
 
-%% 3 - Operações:
+%% 3 - Operações ---------------------------------------------------
+% Nesses programas é muito fácil realizar uma operação
+% Você já pode testar na sua janela de comando:
+1 + 1
+% Se colocar sem ponto e vírgula, a próxima linha retornará o resultado da operação
+1 + 1
+2
+% Se colocar ponto e vírgula no fim, o resultado não será exibido e estará guardado em uma variável denominada ans
+1 + 1;
+% No seu workspace aparecerá uma variável chamada ans
+% Digite ans na sua janela de comando:
+ans
+2
+% Entendeu?
+% Sempre que quiser conferir o valor de uma variável, pode chamá-la na janela de comando ou procurá-la no workspace
+% Isso facilita muito, você vai ver.
+% Agora vamos ver algumas operações
 % +, -, *, /, ^, (). 
 % Funções importantes: sin, sind, cos,cosd,tan,tand,abs, fix, floor, 
 % ceil, round, mod, rem, sign, sqrt,nthroot, log, log2, log10, exp
-clear;
+clear; % Limpando para deixar visualmente bonito
+clc; % Lipando a janela de comandos para deixar bonito
+
 x = 12 +5; % adição
 y = 12-5; % subtração
 z = 12*5; % multiplicação
@@ -45,17 +84,32 @@ n = nthroot(625,4); % raiz enésima
 E = exp(1);   %e^1 = e;
 o = log(E); % ln(e)
 absoluto = abs(-5); % modulo
+%% ------------------------------------------------------------------------------
 
-%% 4 - Números aleatórios: rand, randi, randn
-clear;
+%% 4 - Números aleatórios: rand, randi, randn ----------------------------------------
+% É possível gerar valores aleatórios de forma rápida também
+% Valores aleatórios são bom para testes
+clear; % Acho que já percebeu que sempre vou utilizar o comando clear para iniciar algo novo né?
+% Sugiro que faça o mesmo para ficar mais fácil de enxegar as variáveis criadas
+% Ah é, esqueci. Por enquanto, rode tudo na janela de comandos.
+% Mais para frente utilizaremos o Editor (onde fazemos nossos scripts)
+% Mas se já sabe usar o Editor, tudo bem. Vamos continuar
+
 x = rand; % numero aleatorio entre 0 e 1
 z = randi([0 100]); % numero aleatorio entre 0 e 100
 y = randi([100,-100]); % numero aleatório entre -100 e 100
 y1 = randi([-100,100],1,5); % vetor com 5 numeros aleatório entre 100 e -100
 y2 = randi([-100,100],5,5); % matriz 5x5 com numeros aleatório entre 100 e -100
+%% ------------------------------------------------------------------------------------
 
+%% 5 - Vetores e matrizes (Array) ------------------------------------------------------
+% Acho que essa é parte que me fez enxergar o mundo de outra forma
+% Antes eu achava muito custoso calcular algum valor referente a uma matriz
+% Agora é rápido e fácil.
+% O que é um vetor? Um conjunto de dados de uma dimensão, ou linha ou coluna.
+% O que é uma matriz? De forma básica é um conjunto de vetores.
+% Vamos visualizar isso?
 
-%% 5 - Vetores e matrizes (Array)
 clear;
 vetor = [1,2,3,4]; % criando um vetor
 tamanho_vetor = length(vetor); % tamanho do vetor
@@ -86,8 +140,8 @@ elemento13_matriz = matriz(1,3); % linha 1 e coluna 3
 elemento22_matriz = matriz(2,2); % linha 2 e coluna 2
 matriz(1,1) = 0; % podemos tambem acessar uma posicao e igualar a um valor. Nesse caso, linha 1 coluna 1 recebe 0
 % Podemos também acessar todos os elementos de uma dimensao de uma só vez, através de dois pontos ":"
-% Exemmplo: quero acessar a primeira todas as colunas na primeira linha da matriz -> matriz(1,:)
-% Exemmplo: Agora quero acessar a todas as linhas da primeira coluna da matriz -> matriz(:,1)
+% Exemplo: quero acessar a primeira todas as colunas na primeira linha da matriz -> matriz(1,:)
+% Exemplo: Agora quero acessar a todas as linhas da primeira coluna da matriz -> matriz(:,1)
 
 matriz(:,1) = 0; % Todas a linhas da primeira coluna recebem 0
 matriz(:,:) = 1; % a matriz inteira recebe 1
@@ -136,11 +190,14 @@ x_maior_5 = x>5;
 % Deeem uma conferida no valor retornado, pode perceber que sua classe é logical, ou seja, logico
 y = x(x_maior_5);
 % Comandos importantes
-resposta1 = any(x>5);
-resposta2 = any(x<0);
-resposta3 = all(x == 5);
-resposta4 = find(x>5);
-% O find retorna os valores desejados, ao inves das posicoes
+resposta1 = any(x>5); % Existe algum valor maior que 5? Se sim, retorna 1 ou true. Senão, retorna 0 ou false
+resposta2 = any(x<0); % Existe algum valor maior que 5? Se sim, retorna 1 ou true. Senão, retorna 0 ou false
+resposta3 = all(x == 5); % Todos os valores são iguais a 5? Se sim, retorna 1 ou true. Senão, retorna 0 ou false
+resposta4 = find(x>5); % O comando find retorna as posições. Nesse caso, retorna as posições dos valores maiores que 5. Ah é, e diferentes de 0
+% Se x fosse um matriz
+x = [1,2,3;1,2,3;1,2,3];
+[linha1,coluna1] = find(x == 1); % Vai retorna linha e coluna dos valores iguais a 1
+% Explore mais o comando find no help.
 
 %% 8 - Operadores lógicos
 % Outro tópico importantissimo. Os operadores lógicos sãos os famosos E e OU
@@ -151,7 +208,7 @@ x = 1:50;
 y = find(x>10 & x<50);
 z = find(x<0 | x<20);
 
-%% 9 - Programação básica
+%% 9 - Programação básica ----------------------------------------------------
 % Escreva um script no editor
 % Um programa para calcular area de uma circunferencia, um triangulo e um quadrado
 % funções input, disp e fprintf
@@ -184,7 +241,7 @@ produtorio = prod(x)
 soma_acumulada = cumsum(x)
 produto_acumulado = cumprod(x) % eu acho que existe isso
 
-% O que mais gosta nesse tipo de linguagem é a forma de indexação de vetores e matrizes
+% O que mais gosta nesse tipo de linguagem (se é que posso dizer linguagem) é a forma de indexação de vetores e matrizes
 % No caso x = 1:10
 % Eu posso usar x(x>5) para acessar os valores maiores que 5
 % Justamente porque x>5 são valores lógicos true e false
