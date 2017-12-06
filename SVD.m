@@ -1,4 +1,4 @@
-function [U,S,V,novo] = SVD(matriz,m)
+function [U,S,V] = SVD(matriz)
 
     %INPUTS:
     %   - matriz = matriz LxN
