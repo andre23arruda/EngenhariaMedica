@@ -56,14 +56,16 @@ ans
 clear; % Limpando para deixar visualmente bonito
 clc; % Lipando a janela de comandos para deixar bonito
 
-x = 12 +5; % adição
-y = 12-5; % subtração
-z = 12*5; % multiplicação
+x = 12 + 5; % adição
+y = 12 - 5; % subtração
+z = 12 * 5; % multiplicação
 w = 12/5; % divisão
 w1 = 5\12; % outra divisao
 a = 12^2; % elevado ao quadrado
 b = 12^3; % elevado ao cubo
+a1 = 12^0.5; % raiz quadrada
 c = 1 + 2*(5+3); % prioridade
+% Aquela prioridade de sempre, parenteses primeiro, multiplicação e divisão, adição e subtração
 d = sin(pi); seno em radianos
 d = sind(90); % seno em graus
 e = cos(pi); % cosseno em radianos
@@ -119,6 +121,9 @@ v1_vetor = vetor(1); % podemos declarar um vetor igual a outro
 v3_vetor1 = vetor1(3); % igual ao elemento de terceira posicao do vetor
 v8_vetor2 = vetor2(8); % igual ao elemento de oitava posicao do vetor
 % Ah é, aqui a indexação começa com 0, o que faz mais sentido na cabeça de algumas pessoas ;)
+% outra forma de criar vetor de forma fácil
+vetor = linspace(1,4,8); % vetor de 1 a 4 contendo 8 elementos
+
 matriz = [1:4;1:4]; % matriz com 4 elementos em cada linha
 [M,N] = size(matriz); % verificando o numero de linhas e colunas da matriz
 % OBS: para criarmos um vetor, basta separar por virgula cada coluna
@@ -161,10 +166,22 @@ ultima_coluna = matriz(:,end);
 penultima_coluna = matriz(:,end-1);
 % Legal né?
 
-% Com o que vimos montar uma matriz 10x10 de valores aleatórios
+% Com o que vimos até agora, vou sugerir alguns exercicios na própria linha de comando
+% Para aquecer: 
+% montar uma matriz 10x10 de valores aleatórios
 % acessar o elemento da quinta linha e quinta coluna
 % trocar o valor da primeira linha inteira para 0
 % transpor a matriz
+
+% Agora valendo:
+% 1 - Criar um vetor de 1 a 100
+% 2 - Subtrair todos os elementos por 5
+% 3 - Cirar uma matriz com duas linhas, na qual suas linhas são iguais ao vetor do item 2. Consegue?
+% 4 - Criar uma matriz com 5 colunas, na qual suas colunas são iguais ao vetor do item 2. Consegue?
+% 5 - Mudar os valores das bordas da matriz do item 4 para 0. Consegue?
+% 6 - Gerar uma matriz 100x100 de numeros aleatorios e bla bla bla
+% 7 - Por enquanto é só. Se quiser, pode procurar mais sobre as funções utilizadas até agora.
+
 
 %% 6 - Operações com Vetores e matrizes
 % Esse é um topico que acho muito importante, porque as opeações com vetores e 
