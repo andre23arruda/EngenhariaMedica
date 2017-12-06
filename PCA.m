@@ -10,8 +10,8 @@ function [autovalor, autovetor, nova_matriz, EQM] = PCA(matriz,m)
     
     carac_desejadas = autovalor(end:end-m:-1);
     
-    nova_matriz = matriz' * autovetor(:,end:end-m+1:-1); % projetando a matriz no novo espaco
+    nova_matriz = matriz' * autovetor(:,end:-1:end-m+1); % projetando a matriz no novo espaco
 
-    EQM = (sum(autovalor1(carac_desejadas))/(sum(autovalor);
+    EQM = (sum(carac_desejadas))/(sum(autovalor));
 
 end
