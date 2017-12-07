@@ -1,4 +1,4 @@
-function [matriz_Sw,matriz_Sb] = espalhamento(classes,n)
+function [matriz_Sw,matriz_Sb] = espalhamento(classes)
 
 % Autor: André Luiz Costa de Arruda
 % Se utilizar para algum trabalho, me cite. Eu vou ficar feliz.
@@ -18,8 +18,6 @@ function [matriz_Sw,matriz_Sb] = espalhamento(classes,n)
 %	- matriz_Sw
 %	- matriz_Sb
 
-	n_classes = length(classes); %numero de classes
-	L = size(classes{1},1); %numero de caracteristicas
     	P=cellfun(@(x)size(x,2),classes); %Verificando o numero de padroes em cada classe
     	P=P./sum(P); %Probabilidade do padrao se encontrar em sua classe
 	dados = [];
