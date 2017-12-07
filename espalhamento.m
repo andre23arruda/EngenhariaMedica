@@ -1,5 +1,12 @@
 function [matriz_Sw,matriz_Sb] = espalhamento(classes,n)
 
+% Autor: André Luiz Costa de Arruda
+% Se utilizar para algum trabalho, me cite. Eu vou ficar feliz.
+% Se quiser, manda uma mensagem no face, whats ou fumaça
+% Pode me seguir no instagram.
+% Sou novo no github, não me julgue.
+% Grato :D
+
 %FUNCAO PARA CALCULAR AS MATRIZES Sw E Sb DE ESPALHAMENTO
 
 %INPUTS:
