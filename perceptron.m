@@ -1,12 +1,5 @@
 function [n_i, w] = perceptron(m1,m2,max_i,p,plotar)
 
-% Autor: André Luiz Costa de Arruda
-% Se utilizar para algum trabalho, me cite. Eu vou ficar feliz.
-% Se quiser, manda uma mensagem no face, whats ou fumaça
-% Pode me seguir no instagram.
-% Sou novo no github, não me julgue.
-% Grato :D
-
 % FUNCAO PARA CALCULAR O CLASSIFICADOR PERCEPTRON 
 % O Perceptron eh um vetor W em L+1 dimensoes que atribui uma classe Pk ao padrao Xk
 
@@ -15,7 +8,8 @@ function [n_i, w] = perceptron(m1,m2,max_i,p,plotar)
 %  - m2: matriz com os dados da classe 2
 %  - max_i: numero maximo de iteracores a serem realizadas
 %  - p: parametro de aprendizado do classificador
-%  - plotar: se diferente de 1, não plotar o perceptron
+%  - plotar: se diferente de 1, plota a ultima iteracao, senão, faz uma
+%            animação daora
   
 %OUTPUTS:
 %  - n_i: numero de iteracoes realizadas para obter a convergencia
@@ -29,7 +23,7 @@ if(L ~= size(m2,1)) % se o numero de caracteristicas das classes for diferente
   print('Numero de caracteristicas diferentes');
 else
   if nargin < 5
-      plotar = 1;
+      plotar = 0;
   end
   m1(end+1,:) = 1; % colocando 1 no vetor
   m2(end+1,:) = 1; % colocando 1 no vetor
@@ -38,7 +32,7 @@ else
   
   cont_erro = length(classes); % Nesse momento o numero de erro eh maximo (inicio do perceptron)
   w = rand([1,L+1]); % criando w0 aleatorio
-  n_i = 1; % contador de iteracoes, inicia igual a 1 pois eh a primeira iteracao
+  n_i = 0; % contador de iteracoes, inicia igual a 1 pois eh a primeira iteracao
   
   if plotar == 1
     h = figure('name','Perceptron'); % criando uma figura
@@ -52,6 +46,9 @@ else
     aux = sum(((repmat(pk(Ye),L+1,1)).* y(:,Ye)),2);
     w = w - (p *(aux')); % atualizando w
     cont_erro = sum(Ye); % contador de erro eh o numero de divergencias
+    if cont_erro == 0
+        break;
+    end
     n_i = n_i + 1; % contador de erro ++
     w0 = w(3); % um ponto do plano perceptron é a ultima posicao de w
     x1 = min([m1(1,:),m2(1,:)]); % calculando x de uma extremidade do perceptron
@@ -59,20 +56,32 @@ else
     x2 = max([m1(1,:),m2(1,:)]); % calculando x de outra extremidade do perceptron
     y2 = (-w0/w(2))-x2*(w(1)/w(2));  % calculando y de outra extremidade do perceptron
     
-    if plotar == 1 % só para plotrar e deixar chavoso
+    if plotar == 1 % só para plotar e deixar chavoso
         cla; % limpando os eixos
-        plot(m1(1,:),m1(2,:),'*'); % plotando classe 1
+        plot(m1(1,:),m1(2,:),'b*'); % plotando classe 1
         hold on;
-        plot(m2(1,:),m2(2,:),'*'); % plotando classe 2
+        plot(m2(1,:),m2(2,:),'r*'); % plotando classe 2
         hold on;
         plot([x1,x2],[y1,y2],'k:','linewidth',1.5); % plotando linha de separação entre as classes
         xlabel('Caracteristica 1'); 
         ylabel('Caracteristica 2');
         figure(h); % chamando figura h
         legend('Classe 1','Classe 2','Perceptron','Location','eastoutside'); % legenda
-        pause(2); % pausando para visualizar o plot do perceptron
+        title(['Nº de iteracoes ',num2str(n_i)]);
+        pause(2);        
     end
-    
   end
-  
+  if plotar ~= 1 % só para plotar e deixar chavoso
+        plot(m1(1,:),m1(2,:),'b*'); % plotando classe 1
+        hold on;
+        plot(m2(1,:),m2(2,:),'r*'); % plotando classe 2
+        hold on;
+        plot([x1,x2],[y1,y2],'k:','linewidth',1.5); % plotando linha de separação entre as classes
+        xlabel('Caracteristica 1'); 
+        ylabel('Caracteristica 2');
+        legend('Classe 1','Classe 2','Perceptron','Location','eastoutside'); % legenda
+        title(['Nº de iteracoes ',num2str(n_i)]);
+   end
+end
+
 end
