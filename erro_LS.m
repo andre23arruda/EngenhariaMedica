@@ -1,5 +1,7 @@
 function erro = erro_LS(dados,classes,w)
 
+% Autor: André Luiz Costa de Arruda
+
 % INPUTS:
 %   - dados: matriz com todos as classes juntas (por favor, junte as classes em uma matriz)
 %   - classes: dados previamente classificados para verificarmos o erro de LS
