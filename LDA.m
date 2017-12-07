@@ -13,13 +13,13 @@ function [d_E,d_M,classe_E,classe_M] = LDA(covariancia,vetores_media,padrao)
    
     M = size(vetores_media,2); % L = caracteristicas, M = classes
     matriz_padrao = repmat(padrao,1,M); % criando uma matriz com os valores das caracteristicas do padrao para facilitar o calculo na linha abaixo
-    d_E = sqrt(sum(((matriz_padrao - vetores_media).^2)));
-    d_M = zeros(1,M);
+    d_E = sqrt(sum(((matriz_padrao - vetores_media).^2))); % Encontrando todas as distâncias euclidianas
+    d_M = zeros(1,M); % Iniciando as distâncias de mahalanobis
     for i = 1:M
-        d_M(i) = sqrt((padrao - vetores_media(:,i))'*(inv(covariancia))*(padrao - vetores_media(:,i)));
+        d_M(i) = sqrt((padrao - vetores_media(:,i))'*(inv(covariancia))*(padrao - vetores_media(:,i))); % Encontrando a distância de mahalanobis para cada classe
     end
     
-    classe_E = find(d_E == min(d_E));
-    classe_M = find(d_M == min(d_M));
+    classe_E = find(d_E == min(d_E)); % menor distancia euclidiana (classifica em uma classe a partir da menor distancia euclidiana)
+    classe_M = find(d_M == min(d_M)); % menor distancia mahalanobis (classifica em uma classe a partir da menor distancia mahalanobis)
     
 end
