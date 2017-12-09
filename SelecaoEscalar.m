@@ -1,17 +1,15 @@
 function [ordem] = SelecaoEscalar (matriz_correlacao, criterio_selecao,peso)
 
-	%FUNÇÃO PARA CALCULAR A SELECAO ESCALAR DE CARACTERISTICAS
-	% ORDENA AS MELHORES CARACTERISTICAS
+% FUNÇÃO PARA CALCULAR A SELECAO ESCALAR DE CARACTERISTICAS
+% ORDENA AS MELHORES CARACTERISTICAS
 
-	% INPUTS:
-	%		matriz_correlacao: matriz de correlacao entre as caracteristicas das classes
-	% 	criterio de selecao: criterio adotado (ROC ou FDR)
-	%		peso: vetor com valores de peso para o criterio de selecao e para a correlacao
+% INPUTS:
+%	- matriz_correlacao: matriz de correlacao entre as caracteristicas das classes
+% 	- criterio de selecao: criterio adotado (ROC ou FDR)
+%	- peso: vetor com valores de peso para o criterio de selecao e para a correlacao
 
-
-	% OUTPUTS:
-	%		ordem: vetor de caracteristicas ordenadas
-
+% OUTPUTS:
+%	- ordem: vetor de caracteristicas ordenadas
 
 	x = find(criterio_selecao == max(criterio_selecao));
 	ordem = x;
