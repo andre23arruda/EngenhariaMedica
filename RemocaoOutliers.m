@@ -1,27 +1,28 @@
-function [caracteristicas] = RemocaoOutliers(classes)
+function [carac_s_outlier] = RemocaoOutliers(carac_outlier)
 
 % Remove outliers de um conjunto de valores utilizando como limiar um numero
 % p de desvios padroes em relacao a mediana.
 
 % INPUT:
-% 	- classes = celula de classes
-%	- classes{i} = matriz L (caracteristicas) x N (padrões)
+% 	- carac_outlier = celula de classes com outliers sem suas caracteristicas
+%	- carac_outlier{i} = matriz L (caracteristicas) x N (padrões)
 
 % OUTPUTS:
-%	- caracteristicas: celula de classes com caracteristicas sem outliers
+%	- carac_s_outlier: celula das classes com caracteristicas sem outliers
 
 	p = 3; % limiar em relação a mediana
-	n_classes = length(classes); % numero de classes
-	for j = 1:n_classes
-		caracteristicas{j} = classes{j};
-		vetor = [];
-		for i = 1:size(classes{j},2)
-			sup=find(classes{j}(:,i)>(median(classes{j}(:,i))+ p*std(classes{j}(:,i))));
-			inf=find(classes{j}(:,i)<(median(classes{j}(:,i))- p*std(classes{j}(:,i))));
-			indexes=union(sup,inf);
-			vetor = union(vetor,indexes);
+	M = length(carac_outlier); % numero de classes
+	L = size(carac_outlier{1},1);
+	for j = 1:M % percorrendo de 1 até o numero de classes
+		carac_s_outlier{j} = carac_outlier{j}; % criando a celula com as classes
+		vetor = []; % vetor nulo que vai receber a posição dos outliers que serão removidos
+		for i = 1:L % percorrendo de 1 até o numero de caracteristicas
+			sup=find(carac_outlier{j}(i,:)>(median(carac_outlier{j}(i,:))+ p*std(carac_outlier{j}(i,:)))); % encontrando quem está acima do limiar
+			inf=find(carac_outlier{j}(i,:)<(median(carac_outlier{j}(i,:))- p*std(carac_outlier{j}(i,:)))); % encontrando quem está abaixo do limiar
+			indexes=union(sup,inf); % juntando quem está acima e abaixo
+			vetor = union(vetor,indexes); % juntando to mundo de todas as caracteristicas (usando union para não ficar repetido)
 		end
-		caracteristicas{j}(vetor,:) = [];
+		carac_s_outlier{j}(:,vetor) = []; % removendo quem está acima e abaixo em todas as caracteristicas
 	end
 
 
