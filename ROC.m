@@ -1,15 +1,14 @@
 function [AUC] = ROC(classe1,classe2,caracteristicas,grafico)
 
-  % FUNCAO PARA PLOTAR A CURVA ROC E CALCULAR A AREA ABAIXO DA CURVA
-  % INPUTS:
-  %     - classe1: caracteristica da primeira classe
-  %     - classe2: caracteristica da segunda classe
-  %		  - caracteristicas: celula com o nome da caracteristica analisada
-  %     - grafico: se grafico for diferente 0, plotar o grafico
+% FUNCAO PARA PLOTAR A CURVA ROC E CALCULAR A AREA ABAIXO DA CURVA
+% INPUTS:
+%     - classe1: caracteristica da primeira classe
+%     - classe2: caracteristica da segunda classe
+%	    - caracteristicas: celula com o nome da caracteristica analisada
+%     - grafico: se grafico for diferente 0, plotar o grafico
 
-
-  %OUTPUTS:
-  %     - AUC: area abaixo da curva
+% OUTPUTS:
+%     - AUC: area abaixo da curva
 
   if nargin <4;
     grafico = 0;
@@ -37,7 +36,7 @@ function [AUC] = ROC(classe1,classe2,caracteristicas,grafico)
     aux = 1;
   end
 
-  if grafico != 0
+  if grafico ~= 0
     figure('name',['Analise AUC ',caracteristicas]);
     plot((0:1),(0:1),'k','linewidth',2); % criando a linha que divide o grafico ao meio
     hold on;
