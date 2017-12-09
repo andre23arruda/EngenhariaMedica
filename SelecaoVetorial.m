@@ -1,4 +1,4 @@
-function [ordem,maxcriterio]= aula17_SelecaoVetorial(metodo,criterio,classes,n)
+function [ordem,maxcriterio]= SelecaoVetorial(metodo,criterio,classes,n)
 
 % Seleciona caracteristicas baseando-se nas Scatter Matrices (seleção vetorial)
 
