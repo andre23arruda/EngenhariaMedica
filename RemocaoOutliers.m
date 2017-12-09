@@ -1,15 +1,17 @@
-function [caracteristicas]=remocaooutliers(classes)
+function [caracteristicas] = RemocaoOutliers(classes)
+
 % Remove outliers de um conjunto de valores utilizando como limiar um numero
 % p de desvios padroes em relacao a mediana.
 
-%INPUT:
-% 	classes = celula de classes
+% INPUT:
+% 	- classes = celula de classes
+%	- classes{i} = matriz L (caracteristicas) x N (padrões)
 
-%OUTPUTS:
-%		caracteristicas: celula de classes com caracteristicas sem outliers
+% OUTPUTS:
+%	- caracteristicas: celula de classes com caracteristicas sem outliers
 
-	p=3;
-	n_classes = length(classes);
+	p = 3; % limiar em relação a mediana
+	n_classes = length(classes); % numero de classes
 	for j = 1:n_classes
 		caracteristicas{j} = classes{j};
 		vetor = [];
