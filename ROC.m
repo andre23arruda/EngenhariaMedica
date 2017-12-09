@@ -4,7 +4,7 @@ function [AUC] = ROC(classe1,classe2,caracteristicas,grafico)
 % INPUTS:
 %     - classe1: caracteristica da primeira classe
 %     - classe2: caracteristica da segunda classe
-%- caracteristicas: celula com o nome da caracteristica analisada
+%  - caracteristicas: celula com o nome da caracteristica analisada
 %     - grafico: se grafico for diferente 0, plotar o grafico
 
 % OUTPUTS:
