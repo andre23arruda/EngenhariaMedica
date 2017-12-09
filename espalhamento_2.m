@@ -1,4 +1,4 @@
-function [J1,J,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento(classes,n)
+function [J1,J2,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento_2(classes,n)
 
 % Autor: André Luiz Costa de Arruda
 % Se utilizar para algum trabalho, me cite. Eu vou ficar feliz.
