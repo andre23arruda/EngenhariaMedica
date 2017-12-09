@@ -25,7 +25,7 @@ function [AUC] = ROC(classe1,classe2,caracteristicas,grafico)
   for i = 1:length(x) %fazendo o limiar percorrer o vetor com todos valores do vetor que possui as duas classes
     VPR(i) = sum(x(2,i:length(x)) == 2)/(nclasse2); %calculando a quantidade de VP a direita do limiar
     FPR(i) = sum(x(2,i:length(x)) == 1)/(nclasse1); %calculando a quantidade de FP a direita do limiar
-  end
+  end 
 
   VPR(i+1) = 0; %adicionando a posição final como zero
   FPR(i+1) = 0; %adicionando a posição final como zero
