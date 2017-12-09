@@ -14,10 +14,15 @@ function [J1,J,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento(class
 %	- classes{1} eh uma matriz (LxN), L eh o numero de caracteristicas e N o numero de padroes
 %	- n: numero de caracteristicas combinadas
 
-%OUTPUTS: matrizes de espalhamento	
+%OUTPUTS: matrizes de espalhamento
+%	- J1
+%	- J2
+%	- J3
+%	- combinacao
 %	- matriz_Sw
 %	- matriz_Sb
-%
+%	- matriz_Sm
+
 
 	n_classes = length(classes); %numero de classes
 	L = size(classes{1},1); %numero de caracteristicas
@@ -37,6 +42,10 @@ function [J1,J,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento(class
 		matriz_Sw{j} = sum(Sw,3); % somatorio das matrizes de covariancia para obter a matriz Sw
 		matriz_Sm{j} = cov(dados(n_combinacao(j,:),:)',1); % matriz_Sm é a covariancia de todas as classes
 		matriz_Sb{j} = matriz_Sm{j} - matriz_Sw{j};
+		
+		J1(j) = (trace(matriz_Sm{j}))/(trace(matriz_Sw{j}));
+		J2(j) = (det(matriz_Sm{j}))/(det(matriz_Sw{j}));
+		J3(j) = (1/n)*(trace((inv(matriz_Sw{j}))*matriz_Sm{j}));
 	end
 
 end
