@@ -1,16 +1,18 @@
 function [ordem,maxcriterio]= aula17_SelecaoVetorial(metodo,criterio,classes,n)
-% Seleciona caracteristicas baseando-se nas Scatter Matrices (seleção
-% vetorial)
+
+% Seleciona caracteristicas baseando-se nas Scatter Matrices (seleção vetorial)
+
 % INPUT:
 %   classes = célula {1 x numero de classes}
 %   classes{i}= matriz L x N (características x padrões) para a classe i
 %   metodo='forward','exaustivo' ou 'floating'
 %   criterio= 'J1','J2','J3' (de acordo com Theodoridis)
 %   n = numero de caracteristicas para selecionar
+
 % OUTPUT:
 %   maxcriterio=valor do criterio para a seleção
 %   ordem = ordem das caracteristicas de acordo com o criterio escolhido
-%% AGC (atualizado semestre 2/2017)
+%% AGC (atualizado semestre 2/2017). Editado por ALCA (09/12/17)
 
     %% TESTE DOS INPUTS:
     L=size(classes{1},1);
@@ -58,7 +60,7 @@ end
 
         
 function [caractsel,valor]=exaustsel(classes,n,criterio)
-    [J1,J2,J3,combinacoes]= aula17_Scatter(classes,n);
+    [J1,J2,J3,combinacoes]= espalhamento_2(classes,n);
      eval(['caractsel=combinacoes(find(',criterio,'==max(',criterio,')),:);']);
      eval(['valor=max(',criterio,');']);
 end
@@ -68,7 +70,7 @@ end
 function [caractsel,custo]=forwardsel(classes,n,criterio)    
      caractsel=[];
      remaining=1:1:size(classes{1},1);    
-     [J1,J2,J3,combinacoes]= aula17_Scatter(classes,1);
+     [J1,J2,J3,combinacoes]= espalhamento_2(classes,1);
      eval(['caractsel=combinacoes(find(',criterio,'==max(',criterio,')),:);']);
      eval(['custo=max(',criterio,');'])
      remaining(caractsel)=[];
@@ -77,7 +79,7 @@ function [caractsel,custo]=forwardsel(classes,n,criterio)
          escolhida=0;
          for k=1:1:length(remaining)
              testaressas=[caractsel,remaining(k)];
-             [J1,J2,J3,combinacoes]= aula17_Scatter(construirclasses(classes,testaressas),numel(testaressas));
+             [J1,J2,J3,combinacoes]= espalhamento_2(construirclasses(classes,testaressas),numel(testaressas));
              eval(['teste=',criterio,';'])
              if teste>valor
                  eval(['valor=',criterio,';']);
@@ -107,7 +109,7 @@ function [caractsel,valor]=floatingsel(classes,n,criterio)
         Y{m-k}=setdiff(1:m,X{k});
         for i=1:length(Y{m-k})
             testaressas=[X{k} Y{m-k}(i)];
-            [J1,J2,J3,combinacoes]= aula17_Scatter(construirclasses(classes,testaressas),numel(testaressas));
+            [J1,J2,J3,combinacoes]= espalhamento_2(construirclasses(classes,testaressas),numel(testaressas));
             eval(['custo=[custo ',criterio,'];']);
         end
         [maxcusto,ind]=max(custo);
@@ -117,13 +119,13 @@ function [caractsel,valor]=floatingsel(classes,n,criterio)
         custo=[];
         for i=1:length(X{k+1})
             testaressas=setdiff(X{k+1}, X{k+1}(i));
-            [J1,J2,J3,combinacoes]= aula17_Scatter(construirclasses(classes,testaressas),numel(testaressas));
+            [J1,J2,J3,combinacoes]= espalhamento_2(construirclasses(classes,testaressas),numel(testaressas));
             eval(['custo=[custo ',criterio,'];']);
         end
         [maxcusto,r]=max(custo);
         xr=X{k+1}(r); %caracteristica menos relevante     
         if r==k+1 %é a caracteristica que foi adicionada: continua sem remove-la
-            [J1,J2,J3,combinacoes]= aula17_Scatter(construirclasses(classes,X{k+1}),numel(X{k+1}));
+            [J1,J2,J3,combinacoes]= espalhamento_2(construirclasses(classes,X{k+1}),numel(X{k+1}));
              eval(['C{k+1}=',criterio,';']);
             k=k+1;
             continue;
@@ -146,14 +148,14 @@ function [caractsel,valor]=floatingsel(classes,n,criterio)
             custo=[];
             for i=1:length(Xlinha{k})
                  testaressas=setdiff(Xlinha{k}, Xlinha{k}(i));
-                 [J1,J2,J3,combinacoes]= aula17_Scatter(construirclasses(classes,testaressas),numel(testaressas));
+                 [J1,J2,J3,combinacoes]= espalhamento_2(construirclasses(classes,testaressas),numel(testaressas));
                   eval(['custo=[custo ',criterio,'];']);
             end
             [maxcusto,s]=max(custo);
             xs=Xlinha{k}(s); %caracteristica menos relevante no novo conjunto
             if maxcusto<C{k-1} %remocao de xs baixa o custo, então fica com o Xlinha 
                 X{k}=Xlinha{k};
-                [J1,J2,J3,combinacoes]= aula17_Scatter(construirclasses(classes,X{k}),numel(X{k}));
+                [J1,J2,J3,combinacoes]= espalhamento_2(construirclasses(classes,X{k}),numel(X{k}));
                 eval(['C{k}=',criterio,';']); 
                 go=0;
                 break;
@@ -163,7 +165,7 @@ function [caractsel,valor]=floatingsel(classes,n,criterio)
             k=k-1;
             if k==2
                 X{k}=Xlinha{k};
-                [J1,J2,J3,combinacoes]= aula17_Scatter(construirclasses(classes,X{k}),numel(X{k}));
+                [J1,J2,J3,combinacoes]= espalhamento_2(construirclasses(classes,X{k}),numel(X{k}));
                 eval(['C{k}=',criterio,';']);                 
                 go=0;
             end
