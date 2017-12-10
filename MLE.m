@@ -1,5 +1,7 @@
 function [media,covariancia] =  MLE(matriz)
 
+% FUNCAO PARA CALCULAR MLE (MAXIMUM LIKELIHOOD ESTIMATION)
+
 % INPUTS:
 %   - matriz de dados (características por padrões) 
 
