@@ -1,13 +1,15 @@
 function [J1,J2,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento_2(classes,n)
 
-% Autor: André Luiz Costa de Arruda
+% Autor: AndrÃ© Luiz Costa de Arruda
 % Se utilizar para algum trabalho, me cite. Eu vou ficar feliz.
-% Se quiser, manda uma mensagem no face, whats ou fumaça
+% Se quiser, manda uma mensagem no face, whats ou fumaÃ§a
 % Pode me seguir no instagram.
-% Sou novo no github, não me julgue.
+% Sou novo no github, nÃ£o me julgue.
 % Grato :D
 
 %FUNCAO PARA CALCULAR AS MATRIZES Sw E Sb DE ESPALHAMENTO
+
+pkg load statistics
 
 %INPUTS:
 %	- classes: celula {1xC}, na qual C eh o numero de classes.
@@ -35,12 +37,12 @@ function [J1,J2,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento_2(cl
 	
 	for j = 1:n_combinacao
 		for i = 1:n_classes
-			matriz_cov = cov(classes{i}(n_combinacao(j,:),:)',1); % matriz de covariancia normalizada das caracteristicas combinadas de cada classe
+			matriz_cov = cov(classes{i}(combinacao(j,:),:)',1); % matriz de covariancia normalizada das caracteristicas combinadas de cada classe
 			Sw(:,:,i) = P(i) * matriz_cov; % calculando Sw de cada classe para depois fazer o somatorio
 			dados = [dados,classes{i}]; % montando o conjunto de todas as classes
 		end
 		matriz_Sw{j} = sum(Sw,3); % somatorio das matrizes de covariancia para obter a matriz Sw
-		matriz_Sm{j} = cov(dados(n_combinacao(j,:),:)',1); % matriz_Sm é a covariancia de todas as classes
+		matriz_Sm{j} = cov(dados(combinacao(j,:),:)',1); % matriz_Sm Ã© a covariancia de todas as classes
 		matriz_Sb{j} = matriz_Sm{j} - matriz_Sw{j};
 		
 		J1(j) = (trace(matriz_Sm{j}))/(trace(matriz_Sw{j}));
