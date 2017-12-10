@@ -10,12 +10,7 @@ function [media,covariancia,cov_media] =  MLE(matriz)
 % OUTPUTS:
 %   - estimativas da média e da covariância da distribuição de probabilidade associada aos dados.
 
-    N = size(matriz,2); % numero de padroes
-    media = mean(matriz,2); 
-    covariancia = zeros(1,N);
-    for i = 1:N
-        covariancia(:,:,i) = (matriz(:,i) - media)' * (matriz(:,i) - media);
-    end
-    cov_media = mean(covariancia);
+    media = mean(matriz,2);
+    covariancia = cov(matriz',1);
     
 end
