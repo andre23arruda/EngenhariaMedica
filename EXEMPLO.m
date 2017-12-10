@@ -29,16 +29,31 @@ end
 correlacao = corr([classes3{1},classes3{2}]');
 
 %% Selecao escalar
-[ordemFDR] = SelecaoEscalar (correlacao, fdr,[0.5,0.5]);
-[ordemROC] = SelecaoEscalar (correlacao, AUC,[0.5,0.5]);
+[ordemFDR] = SelecaoEscalar (correlacao, fdr,[0.5,0.5]); % Nao vou utilizar FDR, é só exemplo
+[ordemROC] = SelecaoEscalar (correlacao, AUC,[0.5,0.5]); % Vou utilizar ROC para selecao vetorial 
+
+%% Selecionando as caracteristicas em ordem
+classes4 = {};
+for i = 1:2
+  classes4{i} = classes3{i}(ordemROC,:); % Selecionando as caracteristicas em ordem a partir da selecao escalar utilizando ROC
+end
 
 %%  TESTE ESPALHAMENTO. DEU CERTO :D
-[J1,J2,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento_2(classes3,4);
+[J1,J2,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento_2(classes4,4); % Só para ver se a função espalhamento deu certo
+[J1,J2,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento_2(classes4); % Só para ver se a função espalhamento deu certo
 
 %% SELECAO VETORIAL
 [ordem,maxcriterio]= SelecaoVetorial('forward','J1',classes3,4);
 
 
+%% Selecionando as caracteristicas em ordem
+classes5 = [];
+for i = 1:2
+  classes5{i} = classes4{i}(ordem,:); % Selecionando as caracteristicas em ordem a partir da selecao vetorial
+end
+
+%% PCA
+[carac_desejadas, autovetor_ordenado, nova_matriz, EQM] = PCA(classes5,2);
 
 
 
