@@ -20,7 +20,7 @@ N1 = size(m1,2); % numero de padroes dos dados da classe 1
 N2 = size(m2,2); % numero de padroes dos dados da classe 2
 
 if(L ~= size(m2,1)) % se o numero de caracteristicas das classes for diferente
-  print('Numero de caracteristicas diferentes');
+  error('Numero de caracteristicas diferentes');
 else
   if nargin < 5
       plotar = 0;
