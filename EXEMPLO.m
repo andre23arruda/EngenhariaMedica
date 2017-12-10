@@ -24,6 +24,7 @@ for i = 1:size(classes3{1},1) % percorrendo de 1 até o numero de caracteristica
   fdr(i) = FDR(classes3{1}(i,:),classes3{2}(i,:));
   AUC(i) = ROC(classes3{1}(i,:),classes3{2}(i,:),nome_caracteristicas{i},1);
 end
+fechatudo;
 
 % Calculando a matriz de correlacao das caracteristicas de todas as classes
 correlacao = corr([classes3{1},classes3{2}]');
@@ -53,10 +54,13 @@ for i = 1:2
 end
 
 %% PCA
-[carac_desejadas, autovetor_ordenado, nova_matriz, EQM] = PCA(classes5,2);
+[carac_desejadas, autovetor_ordenado, nova_matriz, EQM] = PCA([classes5{1},classes5{2}],2);
+id_classes = [ones(1,size(classes5{1},2)),2*ones(1,size(classes5{2}))];
+c1 = nova_matriz(id_classes == 1,:);
+c2 = nova_matriz(id_classes == 2,:);
+figure('name','PCA');
+plot(c1,'bo');
+hold on;
+plot(c2,'ro');
 
-
-
-
-
-
+%% SVD
