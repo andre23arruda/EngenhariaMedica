@@ -43,8 +43,8 @@ else
     % se pk maior que zero, faz parte da classe 1
     % se pk menor que zero, faz parte da classe -1
     Ye = classes ~= pk; % Ye posicao de quem é diferente da classifcacao verdadeira (quem foi classificado erroneamente)
-    aux = sum(((repmat(pk(Ye),L+1,1)).* y(:,Ye)),2);
-    w = w - (p *(aux')); % atualizando w
+    J = sum(((repmat(pk(Ye),L+1,1)).* y(:,Ye)),2);
+    w = w - (p *(J')); % atualizando w
     cont_erro = sum(Ye); % contador de erro eh o numero de divergencias
     if cont_erro == 0
         break;
