@@ -12,7 +12,7 @@ end
 %% Removendo outliers
 classes2 = RemocaoOutliers(classes1); 
 
-%% Normalização
+%% Normalizacao
 classes3 = norm_linear(classes2); 
 
 
@@ -24,3 +24,24 @@ for i = 1:size(classes3{1},1) % percorrendo de 1 até o numero de caracteristica
   fdr(i) = FDR(classes3{1}(i,:),classes3{2}(i,:));
   AUC(i) = ROC(classes3{1}(i,:),classes3{2}(i,:),nome_caracteristicas{i},1);
 end
+
+% Calculando a matriz de correlacao das caracteristicas de todas as classes
+correlacao = corr([classes3{1},classes3{2}]');
+
+%% Selecao escalar
+[ordemFDR] = SelecaoEscalar (correlacao, fdr,[0.5,0.5]);
+[ordemROC] = SelecaoEscalar (correlacao, AUC,[0.5,0.5]);
+
+%%  TESTE ESPALHAMENTO. DEU CERTO :D
+[J1,J2,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento_2(classes3,4);
+
+%% SELECAO VETORIAL
+[ordem,maxcriterio]= SelecaoVetorial('forward','J1',classes3,4);
+
+
+
+
+
+
+
+
