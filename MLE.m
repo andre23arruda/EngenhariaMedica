@@ -1,6 +1,8 @@
-function [media,covariancia] =  MLE(matriz)
+function [media,covariancia,cov_media] =  MLE(matriz)
 
 % FUNCAO PARA CALCULAR MLE (MAXIMUM LIKELIHOOD ESTIMATION)
+% Estimar os parâmetros (média e covariância) da classe. Para isso você deverá usar o método de maximum likelihood aplicado aos
+dados de treinamento. 
 
 % INPUTS:
 %   - matriz de dados (características por padrões) 
@@ -8,12 +10,12 @@ function [media,covariancia] =  MLE(matriz)
 % OUTPUTS:
 %   - estimativas da média e da covariância da distribuição de probabilidade associada aos dados.
 
-    M = size(matriz,2);
+    N = size(matriz,2);
     media = mean(matriz,2);
-    covariancia = zeros(1,M);
+    covariancia = zeros(1,N);
     for i = 1:M
-        covariancia(i) = (matriz(:,i) - media)' * (matriz(:,i) - media);
+        covariancia(i,:) = (matriz(:,i) - media)' * (matriz(:,i) - media);
     end
-    covariancia = mean(covariancia);
+    cov_media = mean(covariancia);
     
 end
