@@ -12,7 +12,7 @@ function [ordem] = SelecaoEscalar (matriz_correlacao, criterio_selecao,peso)
 
 % INPUTS:
 %	- matriz_correlacao: matriz de correlacao entre as caracteristicas das classes
-% 	- criterio de selecao: criterio adotado (ROC ou FDR)
+% 	- criterio de selecao: criterio adotado (vetor ROC ou FDR das caracteristicas)
 %	- peso: vetor com valores de peso para o criterio de selecao e para a correlacao
 
 % OUTPUTS:
