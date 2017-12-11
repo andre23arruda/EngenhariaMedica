@@ -4,11 +4,11 @@ function [carac_s_outlier] = RemocaoOutliers(carac_outlier)
 % p de desvios padroes em relacao a mediana.
 
 % INPUT:
-% 	- carac_outlier = celula de classes com outliers sem suas caracteristicas
+% 	- carac_outlier = celula de classes com outliers em suas caracteristicas
 %	- carac_outlier{i} = matriz L (caracteristicas) x N (padrões)
 
 % OUTPUTS:
-%	- carac_s_outlier: celula das classes com caracteristicas sem outliers
+%	- carac_s_outlier: celula das classes sem outliers em todas as cracteristicas
  	if ~iscell(carac_outlier)
     		error('Entre com uma celula');
   	else
@@ -24,7 +24,7 @@ function [carac_s_outlier] = RemocaoOutliers(carac_outlier)
 				indexes=union(sup,inf); % juntando quem está acima e abaixo
 				vetor = union(vetor,indexes); % juntando to mundo de todas as caracteristicas (usando union para não ficar repetido)
 			end
-			carac_s_outlier{j}(:,vetor) = []; % removendo quem está acima e abaixo em todas as caracteristicas
+			carac_s_outlier{j}(:,vetor) = []; % removendo quem está acima e abaixo (outliers) de todas as caracteristicas
 		end
 	end
 
