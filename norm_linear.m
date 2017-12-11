@@ -1,5 +1,12 @@
 function c_norm = norm_linear(c)
 
+% Autor: André Luiz Costa de Arruda
+% Se utilizar para algum trabalho, me cite. Eu vou ficar feliz.
+% Se quiser, manda uma mensagem no face, whats ou fumaça
+% Pode me seguir no instagram.
+% Sou novo no github, não me julgue.
+% Grato :D
+
 % FUNÇÃO QUE REALIZA A NORMALIZAÇÃO LINEAR DAS CARACTERISTICAS DAS CLASSES
 
 % INPUTS: 
