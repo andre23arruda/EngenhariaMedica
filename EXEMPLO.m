@@ -40,8 +40,8 @@ for i = 1:2
 end
 
 %%  TESTE ESPALHAMENTO. DEU CERTO :D
-[J1,J2,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento_2(classes4,4); % Só para ver se a função espalhamento deu certo
-[J1,J2,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento_2(classes4); % Só para ver se a função espalhamento deu certo
+[J1,J2,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento(classes4,4); % Só para ver se a função espalhamento deu certo
+[J1,J2,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento(classes4); % Só para ver se a função espalhamento deu certo
 
 %% SELECAO VETORIAL
 [ordem,maxcriterio]= SelecaoVetorial('forward','J1',classes3,4);
