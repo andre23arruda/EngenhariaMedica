@@ -1,7 +1,8 @@
 function [n_i, wp] = perceptron_pocket(m1,m2,max_i,p,plotar)
 
-% FUNCAO PARA CALCULAR O CLASSIFICADOR PERCEPTRON 
+% FUNCAO PARA CALCULAR O CLASSIFICADOR PERCEPTRON POCKET
 % O Perceptron eh um vetor W em L+1 dimensoes que atribui uma classe Pk ao padrao Xk
+% O perceptron pocket não atualiza o vetor perceptron quando o numero de erros d Wi for maior que o erro de Wi-1
 
 %INPUTS: 
 %  - m1: matriz com os dados da classe 1
