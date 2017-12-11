@@ -32,3 +32,4 @@ function [d_M,classe_M, d_E, classe_E,] = LDA(covariancia,vetores_media,padrao)
     classe_M = find(d_M == min(d_M)); % menor distancia mahalanobis (classifica em uma classe a partir da menor distancia mahalanobis)
     
 end
+ 
