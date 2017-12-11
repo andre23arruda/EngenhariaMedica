@@ -21,5 +21,6 @@ function [U,S,V,novo] = svd_projecao(matriz,m)
     
  	[U,S,V] = svd(matriz);
    	novo = (matriz' * U(:,end:-1:end-m+1))';
+    % Multiplicando pelos ultimos autovetores porque os maiores autovalores são os ultimos
     
 end    
