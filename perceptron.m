@@ -1,5 +1,12 @@
 function [n_i, w] = perceptron(m1,m2,max_i,p,plotar)
 
+% Autor: André Luiz Costa de Arruda
+% Se utilizar para algum trabalho, me cite. Eu vou ficar feliz.
+% Se quiser, manda uma mensagem no face, whats ou fumaça
+% Pode me seguir no instagram.
+% Sou novo no github, não me julgue.
+% Grato :D
+
 % FUNCAO PARA CALCULAR O CLASSIFICADOR PERCEPTRON 
 % O Perceptron eh um vetor W em L+1 dimensoes que atribui uma classe Pk ao padrao Xk
 
