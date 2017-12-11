@@ -1,5 +1,12 @@
 function [ordem] = SelecaoEscalar (matriz_correlacao, criterio_selecao,peso)
 
+% Autor: André Luiz Costa de Arruda
+% Se utilizar para algum trabalho, me cite. Eu vou ficar feliz.
+% Se quiser, manda uma mensagem no face, whats ou fumaça
+% Pode me seguir no instagram.
+% Sou novo no github, não me julgue.
+% Grato :D
+
 % FUNÇÃO PARA CALCULAR A SELECAO ESCALAR DE CARACTERISTICAS
 % ORDENA AS MELHORES CARACTERISTICAS
 
