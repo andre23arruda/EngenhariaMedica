@@ -20,7 +20,6 @@ function [U,S,V,novo] = svd_projecao(matriz,m)
     %	- novo = matriz projetada em um novo espaco
     
  	[U,S,V] = svd(matriz);
-   	novo = (matriz' * U(:,end:-1:end-m+1))';
-    % Multiplicando pelos ultimos vetores U são correspondentes aos maiores autovalores que ão os ultimos
+   	novo = (matriz' * U(1:m))';
     
 end    
