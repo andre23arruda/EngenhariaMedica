@@ -264,3 +264,64 @@ produto_acumulado = cumprod(x) % eu acho que existe isso
 % Justamente porque x>5 são valores lógicos true e false
 % Então é algo que acho facil observar
 
+
+%% Acho que antes de começar a falar de programação com condicional e loops,
+% vou falar sobre celulas e structs
+% Células:
+% Já pensou em um tipo de variavel que consegue armazenar em um campo uma string,
+% em outro uma matriz, em outro um vetor, em outro um caracter?
+% Aqui temos a célula
+x = {1};
+% A célula é indicada por chaves
+% nesse caso criamos uma celula chamada x que possui em sua primeira posicao o valor 1
+% podemos fazer o seguinte:
+x{2} = 'jwnlfn';
+% Consegue visualizar?
+% colocamos na segunda posicao da celula uma string, incrivel né?
+% E mais, podemos usar a célula como uma matriz de dados
+x{2,2} = 0;
+% Mas e a posicao {2,1}?
+% Facil, foi adicionado um espaço vazio
+% Se voce quiser, pode até adiocionar uma celula dentro de outra celula
+% testa aí, fica a vonts
+% Voce tem que explorar, usar a criatividade. Pensa assim: será que posso fazer tal coisa?
+
+% Bora lá, em celula tem outro ponto importante. 
+% Podemos acessar os dados através de parenteses, mas agora é mais fundo
+clear;
+x = {1,2};
+x{1};
+x{2};
+x(1);
+x{1} = [];
+% Apagou o dado? mas liberou o espaço?
+x(1) = [];
+% E agora?
+% Então, quando queiramos apagar o campo de uma celula, acessamos por parenteses
+
+%% Agora bora para struct
+% Esse é massa, pq é tipo fazer um banco de dados
+% É easy, confia em mim
+x = struct('hue',[1,2,3]);
+% Aqui iniciamos a struct
+% podemos saber o nome dos campos com:
+fieldnames(x);
+% se quiser, pode guardar isso numa variavel. 
+% essa variavel será uma celula :O
+campos = fieldnames(x);
+% Agora, se quiser adicionar outro campo, basta fazer assim:
+x.hue2 = 0;
+% bem facil né
+% Podemos trabalhar com celulas e matrizes dentro de structs
+x.matriz = [1,2;2,2];
+x.celula = {1,2,3,'jwofh'};
+
+% Um atalho no teclado que indico é a tecla F9
+% Com esse atalho vc pode selecionar parte do script e executar
+% vai acelerar bastante seu trabalho
+
+% Podemos trabalhar com vetor de structs:
+x(5).celula = 'wwoggw';
+x;
+whos x;
+type x;
