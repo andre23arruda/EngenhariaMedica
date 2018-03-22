@@ -325,3 +325,61 @@ x(5).celula = 'wwoggw';
 x;
 whos x;
 type x;
+
+%% Bora começar a programar? Fazer o MATLAB fazer coisa que até Zeus duvida
+% explicar rapidamente o if else e o switch
+% if else: Condição para fazer uma tarefa
+x = [0,1,2,3];
+if x(1) == 2
+  disp('XXT quem é sabe');
+else
+  disp('Voce nao é XXT');
+end
+% Aqui nao usamos chaves para fechar o if, basta usar end
+% aconselho deixar identaod (com espaço) para ficar mais elegante
+% Entendeu o uso do if else né?
+
+%% Bora acrescentar um and e um or para ficar mais bolado
+% AND
+clear;
+x = [0,1,2,3];
+if x(1) == 2 && x(2) == 2
+  disp('XXT quem é sabe');
+else
+  disp('Voce nao é XXT');
+end
+
+% OR
+clear;
+x = [0,1,2,3];
+if x(1) == 2 || x(2) == 1
+  disp('XXT quem é sabe');
+else
+  disp('Voce nao é XXT');
+end
+
+% Um outro if, consegue entender?
+clear;
+x = [2,2,2,3];
+if x(1:3) == 2
+  disp('XXT quem é sabe');
+else
+  disp('Voce nao é XXT');
+end
+
+% Switch case muito louco
+x = input('Entre com um numero de 1 a 5: ');
+switch x
+  case 1
+    disp('Voce é legal');
+  case 2
+    disp('Voce é XXT');
+  case 3
+		disp('Vc é mucho loko');
+	case 4
+		disp('UAU');
+	case 5
+		disp('HUE');
+end
+
+%% Switch é bem facil né?
