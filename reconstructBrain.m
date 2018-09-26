@@ -1,6 +1,7 @@
 function conjuntoImagens = reconstructBrain(conjuntoImagens)
     info = conjuntoImagens{6};
     mriBrainPartition = conjuntoImagens{7};
+    conect = conjuntoImagens{3};
     if isempty(mriBrainPartition)
         mriProcessed = im2uint8(conjuntoImagens{1});
         mid = int8(0.5 * size(mriProcessed,3));  % slice do meio
@@ -47,6 +48,20 @@ function conjuntoImagens = reconstructBrain(conjuntoImagens)
 
     voxelSize = voxelSize([1,3,2]).*[4,1,4];
     whiteVol = isosurface(Ds,0.5);
+    
+    %--------------------------------------
+    DsConect = imresize(mriBrainPartition,0.27,'nearest'); % proporcao do cerebro
+    Ds = flip(Ds,1);
+    Ds = flip(Ds,2);
+    Ds = permute(Ds,[3,2,1]);
+
+    voxelSize = voxelSize([1,3,2]).*[4,1,4];
+    whiteVol = isosurface(Ds,0.5);
+    
+    
+    
+    
+    %-------------------------------------
     
     figure;
     patch(whiteVol,'FaceColor','r','EdgeColor','none','FaceAlpha',0.1);
