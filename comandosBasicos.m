@@ -390,8 +390,80 @@ end
 % A sintaxe do for é fácil:
 %	for i = 1:10
 %	end
-% Esse loop significa que i está indo de 1 até 10
+% Esse loop significa que i está indo de 1 até 10 ao passo de 1
+% 1:10 o padrão é incrementar de 1 em 1
 % Teste o seguinte comando:
 	for i = 1:10
 		disp(i);
 	end
+% Nesse comando é mostrado os valores de i em cada repetição
+% Podemos fazer dessa forma também:
+	for i = 1:0.5:10
+		disp(i);
+	end
+% Agora temos o passo de 0.5 (retiramos o padrão de incremento que era de 1 em 1)
+% Vamos pensar no seguinte caso:
+% Temos um vetor de 10 posicões:
+vetor = [1,2,3,4,5,6,7,8,9,10];
+% Quero exibir os valores maiores que 5, um de cada vez.
+% Como faremos?
+% Temos que guardar os elementos maiores que 5
+vetormaiorque5 = vetor(vetor>5));
+% Agora temos que saber o tamanho desse vetor
+nMaiorque5 = numel(vetormaiorque5);
+% OU
+nMaiorque5 = length(vetormaiorque5);
+% OU
+nMaiorque5 = size(vetormaiorque5,2);
+% Agora vamos exibir na tela um elemento de cada vez
+for i = 1:nMaiorque5
+	disp(vetormaiorque5(i));
+end
+% Fácil de entender né?
+% Já sabemos que existe uma função chamada sum que soma os elementos de um vetor,mas vamos fazer uma soma do vetor só para exercitar.
+% Primeiro vamos limpar a área de trabalho e a janela de comandos
+clear all;
+clc;
+% Vamos criar o seguinte vetor
+vetor = [1,5,3,7];
+% Vamos calcular a soma dos elementos vetor através de um for
+soma = 0; % incializando a variavel que vai guardar a soma do vetor
+for i = 1:numel(vetor) 
+	soma = soma + vetor(i); % o que é isso? soma está recebendo a adição entre o ultimo valor de soma e o elemento do vetor na posição i
+	% Na primeira repetição temos: 0+1
+	% Na segunda: 1+5
+	% Na terceira: 6+3
+	% Na quarta: 9+7
+	% E acabou
+end
+% Deu para entender?
+% Vamos fazer a soma dos elementos de uma matriz agora?
+matriz = [1,2,3;7,8,9];
+% Para fazer essa soma, precisamos saber o numero de linhas e o numero de colunas da matriz
+[nLinhas,nColunas] = size(matriz);
+somaMatriz = 0; % iniciando a variavel que vai guardar o valor da soma dos elementos da matriz
+for i = 1:nLinhas % indo da linha 1 até o numero total de linhas
+	for j = 1:nColunas % indo da coluna 1 até o numero total de colunas
+		somaMatriz = somaMatriz + matriz(i,j);
+	end
+end
+% Pronto, só isso
+% Parece mágica, mas é só exercitar e vai resolver uma tarefa facinho.
+
+%% O outro loop citado é o while
+% Qual a diferença dele para o for?
+% O while funciona mais como um loop dentro de um if
+% O comando vai repetir enquanto não sair da condição
+
+
+
+
+
+
+
+
+
+
+
+
+
