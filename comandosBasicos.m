@@ -383,3 +383,15 @@ switch x
 end
 
 %% Switch é bem facil né?
+
+%% Agora que já foi explicado o condicional if else e switch, vamos começar o loop
+% Loop nada é mais é do que a repetição de uma ação. O número de repetições é de acordo com seu loop
+% Temos dois tipos de loop: for e while
+% A sintaxe do for é fácil:
+%	for i = 1:10
+%	end
+% Esse loop significa que i está indo de 1 até 10
+% Teste o seguinte comando:
+	for i = 1:10
+		disp(i);
+	end
