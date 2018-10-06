@@ -468,6 +468,23 @@ end
 % Qual a diferença dele para o for?
 % O while funciona mais como um loop dentro de um if
 % O comando vai repetir enquanto não sair da condição
+% Vamos fazer um exemplo
+i = 0; % iniciando i = 0
+while i < 10 % enquanto i for menor que 10, repete o comando que vem a seguir
+	disp(i); % mostra o valor de i na tela
+	i = i + 1; % incrementa o valor de i em 1. Entao quando i for igual a 10, vai sair do loop
+end
+% Esse foi fácil né? Vamos pensar em algo mais bolado
+i = 0; % iniciando i igual a zero
+while true % enquanto for verdade a vida, pois a vida é linda
+	disp('Estou aprendendo muito') % Exiba na tela essa ilusão kkkkk
+	if i = 10 % mas, porém, contudo, no entanto, todavia se i for igual a 10, saia dessa ilusão
+		break; % o break te faz sair da ilusão, ele quebra o true dali de cima e sai do loop imediatamente
+	end
+	i = i + 1; % se o loop não for quebrado, incrementa 1 em i. Ou seja, depois de incrementar 10 vezes, o loop será quebrado
+end
+% Massa né?
+
 
 
 
