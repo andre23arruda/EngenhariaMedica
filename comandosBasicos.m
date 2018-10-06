@@ -27,9 +27,10 @@ whos z;
 % HELP
 % Mas é muita coisa, onde posso encontrar informação sobre uma função ou comando?
 % O HELP do MATLAB e do OCTAVE é repleto de informações.
-% Se quiser informação de algo escreva doc "nome da fução"
+% Se quiser informação de algo escreva doc "nome da função"
 % EX:
 doc mean; % Verificando informação sobre a função que retorna a média dos dados
+% Ou voce pode ir no canto superior direito e procirar o que deseja. Eu prefiro desse jeito.
 % Então é algo muito fácil, vamos lá?
 %% -------------------------------------------------------------------
 
@@ -99,9 +100,10 @@ clear; % Acho que já percebeu que sempre vou utilizar o comando clear para inic
 
 x = rand; % numero aleatorio entre 0 e 1
 z = randi([0 100]); % numero aleatorio entre 0 e 100
-y = randi([100,-100]); % numero aleatório entre -100 e 100
+y = randi([-100,100]); % numero aleatório entre -100 e 100
 y1 = randi([-100,100],1,5); % vetor com 5 numeros aleatório entre 100 e -100
 y2 = randi([-100,100],5,5); % matriz 5x5 com numeros aleatório entre 100 e -100
+y3 = randn(5); % matriz 5x5 com numeros aleatorios normalmente distribuidos
 %% ------------------------------------------------------------------------------------
 
 %% 5 - Vetores e matrizes (Array) ------------------------------------------------------
@@ -120,14 +122,14 @@ vetor3 = 1:0.5:4; % espaçado em 0.5 cada elemento
 v1_vetor = vetor(1); % podemos declarar um vetor igual a outro
 v3_vetor1 = vetor1(3); % igual ao elemento de terceira posicao do vetor
 v8_vetor2 = vetor2(8); % igual ao elemento de oitava posicao do vetor
-% Ah é, aqui a indexação começa com 0, o que faz mais sentido na cabeça de algumas pessoas ;)
+% Ah é, aqui a indexação começa com 1. Ou seja, a primeira posição de um vetor é 1, o que faz mais sentido na cabeça de algumas pessoas ;)
 % outra forma de criar vetor de forma fácil
 vetor = linspace(1,4,8); % vetor de 1 a 4 contendo 8 elementos
 
 matriz = [1:4;1:4]; % matriz com 4 elementos em cada linha
 [M,N] = size(matriz); % verificando o numero de linhas e colunas da matriz
 % OBS: para criarmos um vetor, basta separar por virgula cada coluna
-% para criar uma matriz, para separar as linhas, bas separa por ponto e virgula
+% para criar uma matriz devemos separar as linhas com ponto e virgula
 % no caso [1,2;4,5] temos na primeira linha: 1 e 2; e na segunda linha: 4 e 5.
 L = size(matriz,1); % tamanho da matriz na primeira dimensao: numero de linhas
 C = size(matriz,2); % tamanho da matriz na segunda dimensão: numero de colunas
@@ -135,9 +137,9 @@ matriz2 = [vetor1;vetor2]; % podemos criar uma matriz concatenando dois vetores,
 % OBS: a dimensão dos vetores deve ser a mesma
 % outra forma de criar uma matriz:
 coluna1 = [1;2;3];
-coluna2 = [4,7,9];
+coluna2 = [4;7;9];
 colunas = [coluna1,coluna2];
-% O que acha que aconteceria se clocasse ponto e virgula?
+% O que acha que aconteceria se colocasse ponto e virgula? Faz o teste
 m_transposto = matriz'; % matriz transposta
 % A indexação no matlab é muito facil, basta chamar uma matriz e pedir uma linha e uma coluna
 %EX: matriz(1,3) -> Nesse caso estamos acessando a linha 1 e coluna 3
@@ -147,13 +149,16 @@ matriz(1,1) = 0; % podemos tambem acessar uma posicao e igualar a um valor. Ness
 % Podemos também acessar todos os elementos de uma dimensao de uma só vez, através de dois pontos ":"
 % Exemplo: quero acessar a primeira todas as colunas na primeira linha da matriz -> matriz(1,:)
 % Exemplo: Agora quero acessar a todas as linhas da primeira coluna da matriz -> matriz(:,1)
-
-matriz(:,1) = 0; % Todas a linhas da primeira coluna recebem 0
+matriz(1,:); % visualizar todos os valores que estão na primeira linha da matriz
+matriz(:,1); % visualizar todos os valores que estão na primeira coluna da matriz
+matriz(:,1) = 0; % Todos os elementos da primeira coluna recebem 0
 matriz(:,:) = 1; % a matriz inteira recebe 1
 % as vezes é necessário iniciar uma matriz ou um vetor com zeros ou uns. Ex: para somar algo dentro de um loop
 % Temos entao o comando zeros e ones
 matriz_de_1 = ones(5,5); % criando uma matriz de UM com 5 linhas e 5 colunas
-matriz_de_0 = zeros(1,5); % criando um vetor de ZERO com 5 elementos
+vetor_de_0 = zeros(1,5); % criando um vetor de ZERO com 5 elementos
+matriz_de_0 = zeros(5,5); % criando uma matriz de ZERO com 5 linhas e 5 colunas
+
 matriz_identidade = eye(5,5); % Para alguns cálculos de estatistica é necessário utilizar a matriz identidade. Nesse caso criamos uma matriz identidade 5x5
 diagonal = diag([1 2 3]); % Criando uma matriz com os elementos na diagonal apenas
 numero_elementos = numel(diagonal); % aqui encontramos o numero de elementos de uma matriz ou vetor
@@ -180,7 +185,7 @@ penultima_coluna = matriz(:,end-1);
 % 4 - Criar uma matriz com 5 colunas, na qual suas colunas são iguais ao vetor do item 2. Consegue?
 % 5 - Mudar os valores das bordas da matriz do item 4 para 0. Consegue?
 % 6 - Gerar uma matriz 100x100 de numeros aleatorios e bla bla bla
-% 7 - Por enquanto é só. Se quiser, pode procurar mais sobre as funções utilizadas até agora.
+% Por enquanto é só. Se quiser, pode procurar mais sobre as funções utilizadas até agora.
 
 
 %% 6 - Operações com Vetores e matrizes
@@ -192,7 +197,13 @@ x = 1:50;
 y = 1:2:100;
 soma = x+y;
 subtracao = x-y;
-multiplicacao = x.*y;
+multiplicacao = x.*y; 
+% que merda é essa de .* ?
+% Isso se chama array operator.
+% Com isso podemos fazer operações com cada elemento da matriz. Agiliza muito os calculos.
+% Imagina que voce deseja multiplicar apenas os valores do vetor [1,2,3] pelo vetor [6,4,9]
+% Entao fazemos: [1,2,3].*[6,4,9]
+% Esse ponto significa que está sendo feita a operação em cada valor da matriz ou vetor
 divisao = x./y;
 potencia = x.^2;
 produto_escalar = x*y';
@@ -204,8 +215,11 @@ produto_vetorial = cross(x,y);
 clear;
 x = [1 2 3; 4 5 6; 7 8 9];
 x_maior_5 = x>5;
-% Deeem uma conferida no valor retornado, pode perceber que sua classe é logical, ou seja, logico
-y = x(x_maior_5);
+x_maior_5; % Para visualizar os valores obtidos, são zeros e uns. 
+% O que isso significa? Significa que 0 é falso (numeros que não são maiores que 5) e 1 é verdadeiro (numeros que são maiores que 5)
+% E se eu quiser guardar os numeros que são maiores que 5 desse vetor?
+y = x(x_maior_5); % Ou seja, gaurdar os valores de x onde x é maior que 5, entendeu?
+
 % Comandos importantes
 resposta1 = any(x>5); % Existe algum valor maior que 5? Se sim, retorna 1 ou true. Senão, retorna 0 ou false
 resposta2 = any(x<0); % Existe algum valor maior que 5? Se sim, retorna 1 ou true. Senão, retorna 0 ou false
@@ -218,12 +232,12 @@ x = [1,2,3;1,2,3;1,2,3];
 
 %% 8 - Operadores lógicos
 % Outro tópico importantissimo. Os operadores lógicos sãos os famosos E e OU
-% E (AND) retorna alto apenas quando as duas entradas são altas
-% OU (OR) retorna altor quando pelo menos uma das entradas é alta
+% E (AND) retorna verdadeiro apenas quando as todas as entradas são verdadeiras
+% OU (OR) retorna verdadeiro quando pelo menos uma das entradas é verdadeira
 clear;
 x = 1:50;
-y = find(x>10 & x<50);
-z = find(x<0 | x<20);
+y = x(x>10 & x<50); % & = E     guardando os valores onde x é maior que 10 e menor que 50, ou seja, de 11 até 49
+z = x(x<0 | x<20); % | = OU
 
 %% 9 - Programação básica ----------------------------------------------------
 % Escreva um script no editor
