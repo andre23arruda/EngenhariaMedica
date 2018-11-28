@@ -1,5 +1,7 @@
 function [carac_s_outlier] = RemocaoOutliers(carac_outlier)
 
+% Autor: André Luiz Costa de Arruda
+
 % Remove outliers de um conjunto de valores utilizando como limiar um numero
 % p de desvios padroes em relacao a mediana.
 
