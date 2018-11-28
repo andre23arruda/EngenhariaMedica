@@ -1,5 +1,7 @@
 function [AUC] = ROC(classe1,classe2,caracteristicas,grafico)
 
+% Autor: André Luiz Costa de Arruda
+
 % FUNCAO PARA PLOTAR A CURVA ROC E CALCULAR A AREA ABAIXO DA CURVA
 % INPUTS:
 %     - classe1: caracteristica da primeira classe
