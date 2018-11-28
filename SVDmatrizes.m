@@ -1,5 +1,7 @@
 function [U,S,V] = SVDmatrizes(matriz)
 
+% Autor: André Luiz Costa de Arruda
+
     %INPUTS:
     %   - matriz = matriz LxN
     %   - m = numero de caracteristicas desejadas
