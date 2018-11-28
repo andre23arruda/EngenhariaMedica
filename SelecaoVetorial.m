@@ -1,5 +1,7 @@
 function [ordem,maxcriterio]= SelecaoVetorial(metodo,criterio,classes,n)
 
+% Autor: André Luiz Costa de Arruda
+
 % Seleciona caracteristicas baseando-se nas Scatter Matrices (seleção vetorial)
 
 % INPUT:
