@@ -1,11 +1,6 @@
 function [caracteristicas] = caracteristicas(sinal,fa,bandas)
 
 % Autor: Andre Luiz Costa de Arruda
-% Se utilizar para algum trabalho, me cite. Eu vou ficar feliz.
-% Se quiser, manda uma mensagem no face, whats ou fumaca
-% Pode me seguir no instagram.
-% Sou novo no github, nao me julgue.
-% Grato :D
 
 pkg load signal %Utilizar se for OCTAVE
 
