@@ -1,5 +1,7 @@
 function [d_M,classe_M, d_E, classe_E,] = LDA(covariancia,vetores_media,padrao)
 
+% Autor: André Luiz Costa de Arruda
+
 % FUNCAO DE CLASSIFICACAO ATRAVES DE MINIMA DISTANCIA: EUCLIDIANA E MAHALANOBIS
 
 % INPUTS:
