@@ -4,7 +4,7 @@ function [J1,J2,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento(clas
 
 %FUNCAO PARA CALCULAR AS MATRIZES Sw E Sb DE ESPALHAMENTO
 
-pkg load statistics
+%pkg load statistics % Se usar Octave
 
 %INPUTS:
 %	- classes: celula {1xC}, na qual C eh o numero de classes.
