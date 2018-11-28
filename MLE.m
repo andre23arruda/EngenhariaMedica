@@ -1,5 +1,7 @@
 function [media,covariancia] =  MLE(matriz)
 
+% Autor: André Luiz Costa de Arruda
+
 % FUNCAO PARA CALCULAR MLE (MAXIMUM LIKELIHOOD ESTIMATION)
 % Estimar os parâmetros (média e covariância) da classe. Para isso você deverá usar o método de maximum likelihood aplicado aos
 % dados de treinamento. 
