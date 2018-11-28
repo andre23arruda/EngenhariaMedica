@@ -1,11 +1,6 @@
 function [carac_desejadas, autovetor_ordenado, nova_matriz, EQM] = PCA(matriz,m)
 
 % Autor: André Luiz Costa de Arruda
-% Se utilizar para algum trabalho, me cite. Eu vou ficar feliz.
-% Se quiser, manda uma mensagem no face, whats ou fumaça
-% Pode me seguir no instagram.
-% Sou novo no github, não me julgue.
-% Grato :D
 
 % FUNÇÃO PARA CALCULAR O PCA
 % INPUTS:
