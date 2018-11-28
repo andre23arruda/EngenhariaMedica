@@ -1,5 +1,7 @@
 function fdr = FDR(vet1,vet2)
 
+% Autor: André Luiz Costa de Arruda
+
 %FUNCAO PARA CALCULAR O CRITERIO DE SELECAO FDR
 
 % INPUTS:
