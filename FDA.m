@@ -1,5 +1,7 @@
 function vetor = FDA(Sw,Sb)
 
+% Autor: André Luiz Costa de Arruda
+
 % FUNÇÃO PARA CALCULAR FDA A PARTIR DAS MATRIZES DE ESPALHAMENTO SW E SB
 % INPUTS:
 %   - Sw: matriz Sw
