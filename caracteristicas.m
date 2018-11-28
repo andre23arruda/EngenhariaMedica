@@ -2,7 +2,7 @@ function [caracteristicas] = caracteristicas(sinal,fa,bandas)
 
 % Autor: Andre Luiz Costa de Arruda
 
-pkg load signal %Utilizar se for OCTAVE
+% pkg load signal %Utilizar se for OCTAVE
 
 % FUNCAO PARA CALCULAR AS CARACTERISTICAS DO SINAL
 % INPUTS
