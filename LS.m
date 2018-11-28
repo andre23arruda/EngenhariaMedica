@@ -1,5 +1,7 @@
 function [w] = LS(m1,m2,a)
 
+% Autor: André Luiz Costa de Arruda
+
     % FUNCAO PARA CALCULAR O CLASSIFICADOR LS
 
     %INPUTS: 
