@@ -1,11 +1,6 @@
 function [J1,J2,J3,combinacao,matriz_Sw,matriz_Sb,matriz_Sm] = espalhamento(classes,n)
 
 % Autor: Andre Luiz Costa de Arruda
-% Se utilizar para algum trabalho, me cite. Eu vou ficar feliz.
-% Se quiser, manda uma mensagem no face, whats ou fumaca
-% Pode me seguir no instagram.
-% Sou novo no github, nao me julgue.
-% Grato :D
 
 %FUNCAO PARA CALCULAR AS MATRIZES Sw E Sb DE ESPALHAMENTO
 
