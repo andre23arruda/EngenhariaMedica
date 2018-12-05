@@ -1,4 +1,6 @@
 %% EXEMPLO FUNCOES
+% Um passo a passo do que deve ser feito na ultima parte da matéria.
+% Infelizmente não terminei, mas deve dar para entender.
 
 load aula12_eeg.mat; % carregando arquivo.
 %dentro dele tem ESTAGIOS E SINAL
